@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-const stuffCtrl =  require('../controllers/stuff');
+
 const auth = require('../middleware/auth');
+const stuffCtrl =  require('../controllers/stuff');
 
 router.post('/', auth,  stuffCtrl.createThing);
 router.put('/:id', auth, stuffCtrl.modifyThing);
