@@ -1,9 +1,10 @@
+/* - - - - - PIQUANTE APP - - - - - */
 
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 
-const stuffRoutes = require('./routes/stuff');
+const saucesRoutes = require('./routes/sauces');
 const userRoutes =  require('./routes/user');
 
 mongoose.connect('mongodb+srv://JorisM:Jolisaris789@cluster0.9eqyb.mongodb.net/dataP6?retryWrites=true&w=majority',
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/images', express.static(path.join(__dirname, 'images')));
-app.use('/api/stuff', stuffRoutes);
+app.use('/api/sauces', saucesRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
