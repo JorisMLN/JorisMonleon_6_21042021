@@ -1,3 +1,5 @@
+/* - - - - - SO PEKOCKO SERVER - - - - - */
+
 const http = require('http');
 const app = require('./app');
 
