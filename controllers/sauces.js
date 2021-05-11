@@ -37,7 +37,7 @@ exports.modifySauce = (req, res, next) => {
             ...JSON.parse(req.body.sauce),
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         } : { ...req.body }
-    Sauce.updateOne({ _id: req.params.id }, { ...sauceObject})
+    Sauce.updateOne({ _id: req.params.id }, { ...sauceObject })
         .then(() => res.status(200).json({ message: 'objet modifié !' }))
         .catch(error => res.status(400).json({ error }));
 };
@@ -56,15 +56,12 @@ exports.deleteSauce = (req, res, next) => {
 };
 
 exports.likeDislikeSauce = (req, res, next) => {
-    console.log('start like dislike' + req.body.like);
 
     const likeObject = req.body;
-    console.log("userId: " + likeObject.userId + " like: " + likeObject.like);
-
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
             checkLikes(likeObject, sauce);
-            console.log("checkLikes " + sauce.likes  + "checkheat " + sauce.heat);
+            console.log("checkLikes " + sauce.likes + "checkheat " + sauce.heat);
 
             Sauce.updateOne({ _id: req.params.id }, sauce)
                 .then(() => res.status(200).json({ message: 'objet updaté !' }))
