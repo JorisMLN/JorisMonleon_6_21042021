@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
         callback(null, name + Date.now() + '.' + extension);
     }
 });
-
+ 
 const upload = multer({
     storage: storage,
     limits: {
@@ -35,27 +35,5 @@ const upload = multer({
     }
 });
 
-
-
-
-
-
-// function validateFile(fileExtension){
-
-//     const allowedExtensions = ['jpg', 'png', 'jpeg']; 
-//     // const sizeLimit = 1000000; /* 1 mégabyte */
-
-//     /* vérifie si l'extension du fichier téléchargé est incluse dans notre tableau des extensions de fichiers autorisées */
-//     if (!allowedExtensions.includes(fileExtension)) {
-//         alert("format du fichier non adapté");
-//         this.value = null;
-//     } 
-//     // else if (fileSize > sizeLimit){
-//     //     alert("Fichier trop lourd")
-//     //     this.value = null;
-//     // }
-// }
-
-// module.exports = multer({ storage }).single('image');
 module.exports =  upload.single('image');
 
