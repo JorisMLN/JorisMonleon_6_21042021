@@ -4,7 +4,6 @@ const Sauce = require('../models/sauces')
 const fs = require('fs');
 
 
-
 exports.getAllSauces = (req, res, next) => {
     Sauce.find()
         .then(sauces => res.status(200).json(sauces))
@@ -37,10 +36,7 @@ exports.modifySauce = (req, res, next) => {
             ...JSON.parse(req.body.sauce),
             imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
         } : { ...req.body };
-        // console.log(sauceObject);
-        // const sauce = new Sauce({
-        //     ...sauceObject
-        // });
+        console.log(sauceObject);
     Sauce.updateOne({ _id: req.params.id }, sauceObject )
         .then(() => res.status(200).json({ message: 'objet modifié !' }))
         .catch(error => res.status(400).json({ error }));
@@ -65,8 +61,7 @@ exports.likeDislikeSauce = (req, res, next) => {
     Sauce.findOne({ _id: req.params.id })
         .then(sauce => {
             checkLikes(likeObject, sauce);
-            console.log("checkLikes " + sauce.likes + "checkheat " + sauce.heat);
-
+            console.log("checkLikes " + sauce.likes);
             Sauce.updateOne({ _id: req.params.id }, sauce)
                 .then(() => res.status(200).json({ message: 'objet updaté !' }))
                 .catch(error => res.status(400).json({ error }));
@@ -78,7 +73,6 @@ exports.likeDislikeSauce = (req, res, next) => {
                 {
                     sauce.likes++;
                     sauce.usersLiked.push(likeObject.userId);
-                    // sauce.usersDisliked = sauce.usersDisliked.filter(userId => userId !== likeObject.userId);
                     let idIndex = sauce.usersDisliked.indexOf(likeObject.userId);
                     if (idIndex > -1) {
                         removeDislike(sauce, idIndex)
@@ -89,7 +83,6 @@ exports.likeDislikeSauce = (req, res, next) => {
                 {
                     sauce.dislikes++;
                     sauce.usersDisliked.push(likeObject.userId);
-                    // sauce.usersDisliked = sauce.usersDisliked.filter(userId => userId !== likeObject.userId);
                     let idIndex = sauce.usersLiked.indexOf(likeObject.userId);
                     if (idIndex > -1) {
                         removeLike(sauce, idIndex)
