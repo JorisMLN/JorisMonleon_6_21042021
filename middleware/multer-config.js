@@ -24,7 +24,7 @@ const upload = multer({
         fileSize: 1000000, // 150 KB for a 1080x1080 JPG 90
     },
     fileFilter: (req, file, callback) => {
-        if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+        if(MIME_TYPES.hasOwnProperty(file.mimetype)) { // (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg")
             console.log('test filter');
             callback(null, true);
         } else {
