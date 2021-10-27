@@ -10,82 +10,49 @@ exports.getAllSites = (req, res, next) => {
       "id": "1",
       "name": "école de la tour",
       "gps": "6876471.6876 136.716871",
-      "children1": { // children du meme nom
+      "children-1": { // children du meme nom
         "id": "1.1",
         "name": "salle de Mr DUPONT",
-        "solution": {
-          "type": 1, // solution.type.1 = confort, solution.type.2...
-          "status": 1 // etat.1 = pas installé, état.2 = installé, etat.3 = en attente (hotline)
-        }
+        "solutionType": 1, // solution.type.1 = confort, solution.type.2...
+        "solutionStatus": 1 // etat.1 = pas installé, état.2 = installé, etat.3 = en attente (hotline)
       },
-      "children2": {
+      "children-2": {
         "id": "1.2",
         "name": "salle de Mr MICHEL",
-        "solution": {
-          "type": 1,
-          "status": 1
-        }
-      }
-    },
-    {
-      "id": "2",
-      "name": "école de machin",
-      "gps": "6876471.6876 136.716871",
-      "children": {
-        "id": "2.1",
-        "name": "cantine",
-        "solution": {
-          "type": 1,
-          "status": 1
-        }
-      }
-    },
-    {
-      "id": "3",
-      "name": "école de machin",
-      "gps": "6876471.6876 136.716871",
-      "children": {
-        "id": "3.1",
-        "name": "cantine",
-        "solution": {
-          "type": 1,
-          "status": 1
-        }
-      }
-    },
-    {
-      "id": "4",
-      "name": "école de machin",
-      "gps": "6876471.6876 136.716871",
-      "children": {
-        "id": "4.1",
-        "name": "cantine",
-        "solution": {
-          "type": 1,
-          "status": 1
-        }
+        "solutionType": 1, // solution.type.1 = confort, solution.type.2...
+        "solutionStatus": 1 // etat.1 = pas installé, état.2 = installé, etat.3 = en attente (hotline)
       }
     },
     {
       "id": "5",
       "name": "école de la tour",
       "gps": "6876471.6876 136.716871",
-      "children1": {
+      "children": [{
         "id": "5.1",
-        "name": "salle de Mr DUPONT",
-        "solution": {
-          "type": 1,
-          "status": 1
-        }
-      },
-      "children2": {
+        "name": "batiment-E",
+        "children": [{
+          "id": "5.1.1",
+          "name": "Salle de Mr Dupont",
+          "solutionType": 1, // solution.type.1 = confort, solution.type.2...
+          "solutionStatus": 1 // etat.1 = pas installé, état.2 = installé, etat.3 = en attente (hotline)
+        }]
+      }, {
         "id": "5.2",
-        "name": "salle de Mr MICHEL",
-        "solution": {
-          "type": 1,
-          "status": 1
-        }
-      }
+        "name": "batiment-E",
+        "children": [{
+          "id": "5.2.1",
+          "name": "Salle de Mr Michel",
+          "solutionType": 1, // solution.type.1 = confort, solution.type.2...
+          "solutionStatus": 1 // etat.1 = pas installé, état.2 = installé, etat.3 = en attente (hotline)
+        },
+        {
+          "id": "5.2.2",
+          "name": "Salle de Mr Alain",
+          "solutionType": 1, // solution.type.1 = confort, solution.type.2...
+          "solutionStatus": 1 // etat.1 = pas installé, état.2 = installé, etat.3 = en attente (hotline)
+        }]
+      },
+      ]
     },
   ]
   console.log('Les sites')
