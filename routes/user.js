@@ -1,11 +1,10 @@
 /* - - - - - USER ROUTER - - - - - */
 
-const express =  require('express');
+const express = require('express');
 const router = express.Router();
 
-const userCrtl =  require('../controllers/user');
+const userCrtl = require('../controllers/user');
 
-router.post('/signup', userCrtl.signup);
-router.post('/login', userCrtl.login);
+router.post('/', userCrtl.login);
 
-module.exports =  router;
+module.exports = router;
